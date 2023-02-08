@@ -12,9 +12,10 @@ export const useCustomerForm = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const reqCustomer = new CustomerCreateRequest();
+
   const schema = yup.object().shape({
     firstName: yup.string().required(APP.REQUIRED_FIELD),
-    userName: yup.string().required(APP.REQUIRED_FIELD),
+    username: yup.string().required(APP.REQUIRED_FIELD),
     lastName: yup.string().required(APP.REQUIRED_FIELD),
     birthdate: yup.string().required(APP.REQUIRED_FIELD),
     phoneNumber: yup.string().required(APP.REQUIRED_FIELD),
@@ -23,9 +24,9 @@ export const useCustomerForm = () => {
     imageUrl: yup.string().required(APP.REQUIRED_FIELD),
   });
 
-  const form = useForm<any>({
+  const form = useForm<CustomerCreateRequest.AsObject>({
     defaultValues: {
-      userName: "",
+      username: "",
       firstName: "",
       lastName: "",
       birthdate: moment().format(),
@@ -37,8 +38,10 @@ export const useCustomerForm = () => {
     resolver: yupResolver(schema),
   });
 
+  const { reset } = form;
+
   const onSubmit = ({
-    userName,
+    username,
     firstName,
     lastName,
     birthdate,
@@ -46,10 +49,10 @@ export const useCustomerForm = () => {
     address,
     gender,
     imageUrl,
-  }: any) => {
+  }: CustomerCreateRequest.AsObject) => {
     setIsLoading(true);
 
-    reqCustomer.setUsername(userName);
+    reqCustomer.setUsername(username);
     reqCustomer.setFirstName(firstName);
     reqCustomer.setAddress(address);
     reqCustomer.setLastName(lastName);
@@ -61,8 +64,8 @@ export const useCustomerForm = () => {
     client
       .doCustomerCreate(reqCustomer, null)
       .then((res) => {
-        console.log("salom");
-        toast("succecfully");
+        toast("succecfully stored");
+        reset({});
       })
       .catch((err) => {
         console.log(err);

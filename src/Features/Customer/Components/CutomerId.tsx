@@ -6,6 +6,7 @@ import { client } from "Services/Api";
 
 export const CustomerId = () => {
   const [customer, setCustomer] = useState<CustomerReadResponse.AsObject>();
+
   useEffect(() => {
     const reqCustomer = new CustomerReadRequest();
     reqCustomer.setId("1675816519062000083");

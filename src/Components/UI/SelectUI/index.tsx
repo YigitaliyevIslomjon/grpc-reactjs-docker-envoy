@@ -9,7 +9,7 @@ import { SelelctOptions } from "Types";
 
 type Props = {
   label: string;
-  value: string;
+  value: string | number;
   onChange: (value: unknown) => void;
   required?: boolean;
   helperText?: string;

@@ -44,7 +44,7 @@ export const CustomerForm = () => {
         </Grid>
         <Grid item xs={4}>
           <Controller
-            name="userName"
+            name="username"
             control={control}
             render={({ field: { value, onChange }, fieldState: { error } }) => {
               return (

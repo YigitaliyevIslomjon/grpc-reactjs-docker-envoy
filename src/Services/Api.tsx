@@ -1,3 +1,3 @@
 import { RhanovServiceClient } from "proto/ProfileServiceClientPb";
 
-export const client = new RhanovServiceClient("http://localhost:8080");
+export const client = new RhanovServiceClient(`${process.env.REACT_APP_URL}`);

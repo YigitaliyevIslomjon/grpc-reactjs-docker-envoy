@@ -17,7 +17,6 @@ export const useBusList = () => {
     client
       .doBusListRead(busRequest, {})
       .then((res) => {
-        console.log(res);
         const { resultsList } = (res as BusReadListResponse).toObject();
         setBusList(resultsList);
       })
