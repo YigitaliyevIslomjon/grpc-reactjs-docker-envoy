@@ -1,0 +1,86 @@
+syntax = "proto3";
+option go_package = ".";
+package Profile;
+
+message CustomerCreateRequest {
+    string username = 1;
+    string first_name = 2;
+    string last_name = 3;
+    string birthdate = 4;
+    string phone_number = 5;
+    string address = 6;
+    int64 gender = 7;
+    string image_url = 8;
+}
+
+message CustomerReadRequest {
+    string id = 1;
+}
+
+message CustomerRead {
+    string id = 1;
+    string username = 2;
+    string first_name = 3;
+    string last_name = 4;
+    string birthdate = 5;
+    string phone_number = 6;
+    string address = 7;
+    string gender = 8;
+    string image_url = 9;
+}
+
+message CustomerReadResponse {
+    string status = 1;
+    string message = 2;
+    // CustomerRead result = 3;
+    string id = 3;
+    string username = 4;
+    string first_name = 5;
+    string last_name = 6;
+    string birthdate = 7;
+    string phone_number = 8;
+    string address = 9;
+    string gender = 10;
+    string image_url = 11;
+}
+
+message GenderReadRequest {
+    int64 id = 1;
+    string name = 2;
+}
+
+message GenderReadResponse {
+    string status = 1;
+    string message = 2;
+    repeated GenderReadRequest results = 3;
+}
+
+message BusReadResponse {
+    int64 id = 1;
+    string name = 2;
+    string image_url = 3;
+    string departure_station = 4;
+    string arrival_station = 5;
+    string departure_time = 6;
+    string arrival_time = 7;
+    string range_time = 8;
+    float price = 9;
+    string seat_type = 10;
+}
+
+message BusReadListResponse {
+    string status = 1;
+    string message = 2;
+    repeated BusReadResponse results = 3;
+}
+
+message BusReadRequest {
+
+}
+
+service RhanovService {
+    rpc DoGenderRead(GenderReadRequest) returns (GenderReadResponse) {}
+    rpc DoCustomerCreate(CustomerCreateRequest) returns (CustomerReadResponse) {}
+    rpc DoCustomerRead(CustomerReadRequest) returns (CustomerReadResponse) {}
+    rpc DoBusListRead(BusReadRequest) returns (BusReadListResponse) {}
+}
