@@ -1,1 +1,1 @@
-export type SelelctOptions = { title: string; value: string };
+export type SelelctOptions = { title: string; value: string | number };

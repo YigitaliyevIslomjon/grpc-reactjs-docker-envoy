@@ -10,3 +10,9 @@ export const GenderOptions: SelelctOptions[] = [
     value: "2",
   },
 ];
+
+export const tabPanelList: SelelctOptions[] = [
+  { title: "Create customer profile ", value: 0 },
+  { title: "Customer By Id", value: 1 },
+  { title: "Bus List", value: 2 },
+];

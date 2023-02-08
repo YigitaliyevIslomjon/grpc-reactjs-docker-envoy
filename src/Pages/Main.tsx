@@ -4,6 +4,7 @@ import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import { BusList } from "Features/Bus";
 import { CustomerForm, CustomerId } from "Features/Customer";
+import { tabPanelList } from "Constants/Data";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -13,11 +14,7 @@ interface TabPanelProps {
 
 export default function Main() {
   const [value, setValue] = React.useState(0);
-  const tabPanelList = [
-    { title: "Create customer profile ", value: 0 },
-    { title: "Customer By Id", value: 1 },
-    { title: "Bus List", value: 2 },
-  ];
+
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
@@ -67,7 +64,7 @@ function TabPanel(props: TabPanelProps) {
   );
 }
 
-function a11yProps(index: number) {
+function a11yProps(index: number | string) {
   return {
     id: `simple-tab-${index}`,
     "aria-controls": `simple-tabpanel-${index}`,

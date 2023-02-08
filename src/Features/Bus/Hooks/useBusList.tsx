@@ -13,7 +13,6 @@ export const useBusList = () => {
   const getBusList = () => {
     setIsLoading(true);
     const busRequest = new BusReadRequest();
-    client.doBusListRead(busRequest, {}, (err, res) => {});
     client
       .doBusListRead(busRequest, {})
       .then((res) => {
